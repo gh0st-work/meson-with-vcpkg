@@ -8,7 +8,7 @@ Example vcpkg packages available from meson
   import platform;
   from subprocess import check_output;
   if platform != "Windows":
-      print(check_output("""locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F ".pc""""))
+      print(check_output("""locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F ".pc""""));
   else:
       import os;
       from pathlib import Path;
@@ -36,7 +36,7 @@ Example vcpkg packages available from meson
   import platform;
   from subprocess import check_output;
   if platform != "Windows":
-      print(check_output("""locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F ".pc""""))
+      print(check_output("""locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F ".pc""""));
   else:
       import os;
       from pathlib import Path;
