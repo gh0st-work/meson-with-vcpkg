@@ -2,32 +2,37 @@
 Example vcpkg packages available from meson
 
 ## Linux
-Add to `project` `default_options`:
-```
-'pkg_config_path='+run_command('sh', '-c', 'echo $(locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F ".pc")').stdout().strip()
-```
-Like in the example:
-```
-project(
-  'coolproj', 'cpp', version: '0.0.1', 
-  default_options : [
-    'warning_level=3', 
-    'cpp_std=c++23', 
-    'optimization=3',
-    'pkg_config_path='+run_command('sh', '-c', 'echo $(locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F ".pc")').stdout().strip()
-  ],
-)
-
-...
-```
-Then re-setup your project settings
-```
-meson setup build
-```
-And compile as always
-```
-meson compile -C build
-```
+- Add to `project` `default_options`:
+  ```
+  'pkg_config_path='+run_command('sh', '-c', 'echo $(locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F ".pc")').stdout().strip()
+  ```
+  Like in the example:
+  ```
+  project(
+    'coolproj', 'cpp', version: '0.0.1', 
+    default_options : [
+      'warning_level=3', 
+      'cpp_std=c++23', 
+      'optimization=3',
+      'pkg_config_path='+run_command('sh', '-c', 'echo $(locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F ".pc")').stdout().strip()
+    ],
+  )
+  
+  ...
+  ```
+- Don't forget to run, 
+  ```
+  sudo updatedb
+   ```
+  Otherwise `locate` may not find `pkgconfig`
+- Then re-setup your project settings
+  ```
+  meson setup build
+  ```
+- And compile as always
+  ```
+  meson compile -C build
+  ```
 
 ## Windows
 Just hardcode path to `[]/vcpkg/installed/[]/pkgconfig.exe` or use `python` like here (not tested, kinda pseudo-code):
