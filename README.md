@@ -19,7 +19,7 @@
           os.path.join(root, name)
           for root, dirs, files in os.walk(vcpkg_dir)
           for name in files
-          if name == "pkgconfig.exe" and root.contains("installed") and not root.contains("debug")
+          if name == "pkgconfig.exe" and "installed" in root and "debug" not in root
       ];
       print(pkgconfig[0]);
   ''').stdout().strip()
@@ -47,7 +47,7 @@
           os.path.join(root, name)
           for root, dirs, files in os.walk(vcpkg_dir)
           for name in files
-          if name == "pkgconfig.exe" and root.contains("installed") and not root.contains("debug")
+          if name == "pkgconfig.exe" and "installed" in root and "debug" not in root
       ];
       print(pkgconfig[0]);
       ''').stdout().strip()
