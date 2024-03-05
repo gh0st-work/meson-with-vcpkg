@@ -5,7 +5,7 @@
 
 ## Example
 - Add to `project` `default_options`:
-  ```
+  ```meson
   'pkg_config_path='+run_command('python3', '-c', '''
   import platform;
   from subprocess import check_output;
@@ -26,7 +26,7 @@
   ''').stdout().strip()
   ```
   Like in the example:
-  ```
+  ```meson
   project(
     'coolproj', 'cpp', version: '0.0.1', 
     default_options : [
@@ -60,24 +60,24 @@
   ```
 - (Linux) Don't forget to run:
   
-  ```
+  ```bash
   sudo updatedb
    ```
   Otherwise `locate` may not find `pkgconfig`
   
 - (Windows) Don't forget to install `pkg-config.exe` if is is not installed:
   
-  ```
+  ```cmd
   choco install pkgconfiglite
   ```
   
 - Then re-setup your project settings:
   
-  ```
+  ```bash
   meson setup build
   ```
 - And compile as always:
   
-  ```
+  ```bash
   meson compile -C build
   ```
