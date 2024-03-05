@@ -4,7 +4,7 @@
 - Tested on Windows
 
 ## Example
-- Add to `project` `default_options`:
+- Add this option to `project` `default_options`:
   ```meson
   'pkg_config_path='+run_command('python3', '-c', '''
   import platform;
