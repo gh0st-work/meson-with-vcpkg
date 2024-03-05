@@ -6,7 +6,7 @@
 ## Example
 - Add this option to `project` `default_options`:
   ```meson
-  'pkg_config_path='+run_command('python3', '-c', '''
+  'pkg_config_path=' + run_command('python3', '-c', '''
   import platform;
   from subprocess import check_output;
   import os;
@@ -30,7 +30,7 @@
       'cpp_std=c++23', 
       'optimization=3',
       
-      'pkg_config_path='+run_command('python3', '-c', '''
+      'pkg_config_path=' + run_command('python3', '-c', '''
   import platform;
   from subprocess import check_output;
   import os;
