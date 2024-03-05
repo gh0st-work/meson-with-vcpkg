@@ -8,7 +8,7 @@
   'pkg_config_path='+run_command('python3', '-c', '''
   import platform;
   from subprocess import check_output;
-  if platform != "Windows":
+  if platform.system() != "Windows":
       print(check_output("locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F .pc", shell=True).decode().strip());
   else:
       import os;
@@ -36,7 +36,7 @@
       'pkg_config_path='+run_command('python3', '-c', '''
   import platform;
   from subprocess import check_output;
-  if platform != "Windows":
+  if platform.system() != "Windows":
       print(check_output("locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F .pc", shell=True).decode().strip());
   else:
       import os;
