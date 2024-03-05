@@ -1,5 +1,6 @@
 # meson-with-vcpkg
-Example vcpkg packages available from meson
+**Make vcpkg packages available from meson - cross-platform example**
+- Tested on Linux
 
 ## Example
 - Add to `project` `default_options`:
