@@ -14,7 +14,6 @@
   else:
       import os;
       from pathlib import Path;
-      from pathlib import Path;
       vcpkg_dir = Path(check_output("where vcpkg", shell=True).decode().strip()).parents[0];
       pkgconfig = [
           os.path.join(root, name)
@@ -41,7 +40,6 @@
       print(check_output("locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F .pc", shell=True).decode().strip());
   else:
       import os;
-      from pathlib import Path;
       from pathlib import Path;
       vcpkg_dir = Path(check_output("where vcpkg", shell=True).decode().strip()).parents[0];
       pkgconfig = [
