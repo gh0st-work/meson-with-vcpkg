@@ -1,6 +1,7 @@
 # meson-with-vcpkg
 **Make vcpkg packages available from meson - cross-platform example**
 - Tested on Linux
+- Tested on Windows
 
 ## Example
 - Add to `project` `default_options`:
@@ -18,8 +19,8 @@
       pkgconfig = [
           os.path.join(root, name)
           for root, dirs, files in os.walk(vcpkg_dir)
-          for name in files
-          if name == "pkgconfig.exe" and "installed" in root and "debug" not in root
+          for name in dirs 
+          if name == "pkgconfig" and "installed" in root and "debug" not in root
       ];
       print(pkgconfig[0]);
   ''').stdout().strip()
@@ -46,11 +47,11 @@
       pkgconfig = [
           os.path.join(root, name)
           for root, dirs, files in os.walk(vcpkg_dir)
-          for name in files
-          if name == "pkgconfig.exe" and "installed" in root and "debug" not in root
+          for name in dirs 
+          if name == "pkgconfig" and "installed" in root and "debug" not in root
       ];
       print(pkgconfig[0]);
-      ''').stdout().strip()
+  ''').stdout().strip()
   
     ],
   )
