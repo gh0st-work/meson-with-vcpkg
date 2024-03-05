@@ -64,6 +64,13 @@
   sudo updatedb
    ```
   Otherwise `locate` may not find `pkgconfig`
+  
+- (Windows) Don't forget to install `pkg-config.exe` if is is not installed:
+  
+  ```
+  choco install pkgconfiglite
+  ```
+  
 - Then re-setup your project settings:
   
   ```
