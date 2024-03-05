@@ -4,11 +4,11 @@ Example vcpkg packages available from meson
 ## Example
 - Add to `project` `default_options`:
   ```
-  'pkg_config_path='+run_command(import('python3').find_python(), '-c', '''
+  'pkg_config_path='+run_command('python3', '-c', '''
   import platform;
   from subprocess import check_output;
   if platform != "Windows":
-      print(check_output("""locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F ".pc""""));
+      print(check_output("locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F .pc", shell=True).decode().strip());
   else:
       import os;
       from pathlib import Path;
@@ -31,12 +31,12 @@ Example vcpkg packages available from meson
       'warning_level=3', 
       'cpp_std=c++23', 
       'optimization=3',
-  
-      'pkg_config_path='+run_command(import('python3').find_python(), '-c', '''
+      
+      'pkg_config_path='+run_command('python3', '-c', '''
   import platform;
   from subprocess import check_output;
   if platform != "Windows":
-      print(check_output("""locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F ".pc""""));
+      print(check_output("locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F .pc", shell=True).decode().strip());
   else:
       import os;
       from pathlib import Path;
@@ -49,7 +49,7 @@ Example vcpkg packages available from meson
           if name == "pkgconfig.exe" and root.contains("installed") and not root.contains("debug")
       ];
       print(pkgconfig[0]);
-  ''').stdout().strip()
+      ''').stdout().strip()
   
     ],
   )
