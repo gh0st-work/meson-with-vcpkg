@@ -24,5 +24,18 @@ project(
 ## Windows
 Just hardcode path to `[]/vcpkg/installed/[]/pkgconfig.exe` or use `python` like here (not tested, kinda pseudo-code):
 ```
-run_command(import('python3').find_python(), '-c', 'import os; from pathlib import Path; from subprocess import check_output; from pathlib import Path; vcpkg_dir = Path(check_output("where vcpkg", shell=True).decode().strip()).parents[0]; pkgconfig = [os.path.join(root, name) for root, dirs, files in os.walk(vcpkg_dir) for name in files if name == "pkgconfig.exe" and root.contains("installed") and not root.contains("debug")]; print(pkgconfig[0]);').stdout().strip()
+run_command(import('python3').find_python(), '-c', '''
+import os;
+from pathlib import Path;
+from subprocess import check_output;
+rom pathlib import Path;
+vcpkg_dir = Path(check_output("where vcpkg", shell=True).decode().strip()).parents[0];
+pkgconfig = [
+    os.path.join(root, name)
+    for root, dirs, files in os.walk(vcpkg_dir)
+    for name in files
+    if name == "pkgconfig.exe" and root.contains("installed") and not root.contains("debug")
+];
+print(pkgconfig[0]);
+''').stdout().strip()
 ```
