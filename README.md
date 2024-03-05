@@ -50,12 +50,6 @@
   
   ...
   ```
-- (Linux) Don't forget to run:
-  
-  ```
-  sudo updatedb
-   ```
-  Otherwise `locate` may not find `pkgconfig`
   
 - (Windows) Don't forget to install `pkg-config.exe` if it is not installed:
   
