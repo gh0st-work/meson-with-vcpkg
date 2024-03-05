@@ -63,18 +63,18 @@
    ```
   Otherwise `locate` may not find `pkgconfig`
   
-- (Windows) Don't forget to install `pkg-config.exe` if is is not installed:
+- (Windows) Don't forget to install `pkg-config.exe` if it is not installed:
   
   ```
   choco install pkgconfiglite
   ```
   
-- Then re-setup your project settings:
+- Then re-`setup` your project:
   
   ```
   meson setup build
   ```
-- And compile as always:
+- And `compile` as always:
   
   ```
   meson compile -C build
