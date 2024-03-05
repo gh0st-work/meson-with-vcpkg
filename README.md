@@ -9,19 +9,16 @@
   'pkg_config_path='+run_command('python3', '-c', '''
   import platform;
   from subprocess import check_output;
-  if platform.system() != "Windows":
-      print(check_output("locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F .pc", shell=True).decode().strip());
-  else:
-      import os;
-      from pathlib import Path;
-      vcpkg_dir = Path(check_output("where vcpkg", shell=True).decode().strip()).parents[0];
-      pkgconfig = [
-          os.path.join(root, name)
-          for root, dirs, files in os.walk(vcpkg_dir)
-          for name in dirs 
-          if name == "pkgconfig" and "installed" in root and "debug" not in root
-      ];
-      print(pkgconfig[0]);
+  import os;
+  from pathlib import Path;
+  vcpkg_dir = Path(check_output("where vcpkg" if platform.system() == "Windows" else "which vcpkg", shell=True).decode().strip()).resolve().parents[0];
+  pkgconfig = [
+      os.path.join(root, name)
+      for root, dirs, files in os.walk(vcpkg_dir)
+      for name in dirs 
+      if name == "pkgconfig" and "installed" in root and "debug" not in root
+  ];
+  print(pkgconfig[0]);
   ''').stdout().strip()
   ```
   Like in the example:
@@ -36,19 +33,16 @@
       'pkg_config_path='+run_command('python3', '-c', '''
   import platform;
   from subprocess import check_output;
-  if platform.system() != "Windows":
-      print(check_output("locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F .pc", shell=True).decode().strip());
-  else:
-      import os;
-      from pathlib import Path;
-      vcpkg_dir = Path(check_output("where vcpkg", shell=True).decode().strip()).parents[0];
-      pkgconfig = [
-          os.path.join(root, name)
-          for root, dirs, files in os.walk(vcpkg_dir)
-          for name in dirs 
-          if name == "pkgconfig" and "installed" in root and "debug" not in root
-      ];
-      print(pkgconfig[0]);
+  import os;
+  from pathlib import Path;
+  vcpkg_dir = Path(check_output("where vcpkg" if platform.system() == "Windows" else "which vcpkg", shell=True).decode().strip()).resolve().parents[0];
+  pkgconfig = [
+      os.path.join(root, name)
+      for root, dirs, files in os.walk(vcpkg_dir)
+      for name in dirs 
+      if name == "pkgconfig" and "installed" in root and "debug" not in root
+  ];
+  print(pkgconfig[0]);
   ''').stdout().strip()
   
     ],
