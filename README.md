@@ -60,24 +60,24 @@
   ```
 - (Linux) Don't forget to run:
   
-  ```bash
+  ```
   sudo updatedb
    ```
   Otherwise `locate` may not find `pkgconfig`
   
 - (Windows) Don't forget to install `pkg-config.exe` if is is not installed:
   
-  ```cmd
+  ```
   choco install pkgconfiglite
   ```
   
 - Then re-setup your project settings:
   
-  ```bash
+  ```
   meson setup build
   ```
 - And compile as always:
   
-  ```bash
+  ```
   meson compile -C build
   ```
