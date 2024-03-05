@@ -20,6 +20,14 @@ project(
 
 ...
 ```
+Then re-setup your project settings
+```
+meson setup build
+```
+And compile as always
+```
+meson compile -C build
+```
 
 ## Windows
 Just hardcode path to `[]/vcpkg/installed/[]/pkgconfig.exe` or use `python` like here (not tested, kinda pseudo-code):
