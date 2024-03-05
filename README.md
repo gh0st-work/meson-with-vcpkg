@@ -3,6 +3,7 @@ Example vcpkg packages available from meson
 
 ## Linux
 - Add to `project` `default_options`:
+  
   ```
   'pkg_config_path='+run_command('sh', '-c', 'echo $(locate /lib/pkgconfig | grep -F installed | grep -v -F debug | grep -v -F ".pc")').stdout().strip()
   ```
@@ -20,16 +21,19 @@ Example vcpkg packages available from meson
   
   ...
   ```
-- Don't forget to run, 
+- Don't forget to run:
+  
   ```
   sudo updatedb
    ```
   Otherwise `locate` may not find `pkgconfig`
-- Then re-setup your project settings
+- Then re-setup your project settings:
+  
   ```
   meson setup build
   ```
-- And compile as always
+- And compile as always:
+  
   ```
   meson compile -C build
   ```
