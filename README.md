@@ -72,7 +72,7 @@
 - Then re-`setup` your project:
   
   ```
-  meson setup build
+  meson setup build --wipe
   ```
 - And `compile` as always:
   
